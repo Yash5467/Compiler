@@ -21,7 +21,7 @@ function Editor({ defaultValue, defaultLanguage, fileExtension }) {
       }),
     });
     var jsonData = await rowData.json();
-    setOutput(jsonDatadata);
+    setOutput(jsonData);
   };
   return (
     <>
