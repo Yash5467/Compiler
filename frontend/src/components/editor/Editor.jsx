@@ -20,8 +20,8 @@ function Editor({ defaultValue, defaultLanguage, fileExtension }) {
         language: defaultLanguage,
       }),
     });
-    var jsonData = await rowData.json();
-    setOutput(jsonData);
+    var Data = await rowData.json();
+    setOutput(Data);
   };
   return (
     <>
