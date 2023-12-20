@@ -1,15 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Editor as MonacoEditor } from "@monaco-editor/react";
 import OutputContext from "../../context/OutputContext";
-function Editor({ defaultValue, defaultLanguage, fileExtension }) {
-  const [code, setCode] = useState(defaultValue);
-  const { output, setOutput } = useContext(OutputContext);
+function Editor({  defaultLanguage, fileExtension }) {
+  const {  setOutput,defaultCode,input } = useContext(OutputContext);
+  const [code, setCode] = useState(defaultCode);
+  const [key,setKey]=useState(0);
 
   const handleEditorChange = (value) => {
     setCode(value);
   };
   const handleRun = async () => {
-    console.log(code);
     var rowData = await fetch("http://localhost:3000/api/code-execution", {
       method: "POST",
       headers: {
@@ -18,11 +18,20 @@ function Editor({ defaultValue, defaultLanguage, fileExtension }) {
       body: JSON.stringify({
         code: code,
         language: defaultLanguage,
+        input:input
       }),
     });
     var Data = await rowData.json();
     setOutput(Data);
+    console.log(Data);
   };
+
+
+  useEffect(()=>{
+    setKey((prev)=>prev+1);
+    setCode(defaultCode);
+  },[defaultCode])
+
   return (
     <>
       <div className=" flex justify-between">
@@ -35,10 +44,14 @@ function Editor({ defaultValue, defaultLanguage, fileExtension }) {
       </div>
       <div className="border border-gray-500  p-5">
         <MonacoEditor
+        key={key}
           height="90vh"
-          defaultValue={defaultValue}
+          defaultValue={defaultCode}
           defaultLanguage={defaultLanguage}
           onChange={handleEditorChange}
+           options={{minimap:{
+            enabled:false
+           }}}
         />
       </div>
     </>

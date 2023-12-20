@@ -1,27 +1,25 @@
+import { Outlet } from "react-router";
 import "./App.css";
 import { Editor, Output } from "./components";
+import Header from "./components/header/Header";
 
 function App() {
   return (
+    <>
+    <div>
+      <Header/>
+    </div>
     <div className="flex justify-center">
       <div className="w-full">
-      <Editor
-        defaultValue={`// Online Java Compiler
-        // Use this editor to write, compile and run your Java code online
-        
-        class HelloWorld {
-            public static void main(String[] args) {
-                System.out.println("Hello, World!");
-            }
-        }`}
-        defaultLanguage="java"
-        fileExtension={"java"}
-      />
+     <Outlet/>
       </div>
       <div className="w-full" >
       <Output/>
       </div>
     </div>
+    
+    
+ </>
   );
 }
 
