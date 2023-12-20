@@ -6,7 +6,7 @@ function Header() {
   <div className='flex justify-between  p-5 border-b border-gray-500' >
     <div>
       <NavLink to="/">
-      <span>Compile&Run</span>
+      <span className='font-semibold text-lg' >Compile & Run</span>
       </NavLink>
     </div>
     <div  className='flex gap-5'>

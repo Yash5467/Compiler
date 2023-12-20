@@ -19,7 +19,7 @@ function Output() {
       <span>Input</span>
       </div>
      <div className="border border-gray-500 h-[30vh] overflow-hidden" >
-        <textarea onChange={(e)=>setInput(e.target.value)} spellCheck="false" value={input}   className="w-full outline-none border-none p-3 resize-none "/> 
+        <textarea id="input" onChange={(e)=>setInput(e.target.value)} spellCheck="false" value={input}   className="w-full outline-none border-none p-3 resize-none "/> 
       </div>
       <div>
 
