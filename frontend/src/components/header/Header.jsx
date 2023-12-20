@@ -5,11 +5,13 @@ function Header() {
   return (
   <div className='flex justify-between  p-5 border-b border-gray-500' >
     <div>
+      <NavLink to="/">
       <span>Compile&Run</span>
+      </NavLink>
     </div>
     <div  className='flex gap-5'>
        <div >
-        <NavLink to="/compiler/c">
+        <NavLink  to="/compiler/c">
           C Compiler
         </NavLink>
        </div>

@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
 import OutputContext from "../../context/OutputContext";
+import {Loader} from '../index'
 
 function Output() {
-  const { output ,setInput,input} = useContext(OutputContext);
-  return (
+  const { output ,setInput,input,loading} = useContext(OutputContext);
+  return !loading? (
     <div className="m-5">
      <div className="m-h-[40vh]" >
      <div className="m-5">
@@ -14,18 +15,20 @@ function Output() {
       </div>
      </div>
      <div className="m-h-[40vh] my-5" >
-      <div>
+      <div className="m-3">
       <span>Input</span>
       </div>
      <div className="border border-gray-500 h-[30vh] overflow-hidden" >
-        <textarea onChange={(e)=>setInput(e.target.value)} value={input}   className="w-full outline-none border-none p-3 resize-none "/> 
+        <textarea onChange={(e)=>setInput(e.target.value)} spellCheck="false" value={input}   className="w-full outline-none border-none p-3 resize-none "/> 
       </div>
       <div>
 
       </div>
      </div>
     </div>
-  );
+  ):(
+    <Loader/>
+  )
 }
 
 export default Output;

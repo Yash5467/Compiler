@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Editor } from "../src/components";
+import { Output } from "../src/components";
 import OutputContext from "../src/context/OutputContext";
 
 function EditorLayout() {
@@ -37,6 +38,7 @@ function EditorLayout() {
    }`
   }
  
+ 
   
  useEffect(()=>{
   setDefaultCode(defaultSelector[language]);
@@ -44,12 +46,17 @@ function EditorLayout() {
 
 
   return (
-    <div>
+    <div className="flex ">
+    <div className="w-full" >
       <Editor
         defaultLanguage={language}
         fileExtension={"java"}
       />
     </div>
+      <div className="w-full"  >
+      <Output/>
+      </div>
+      </div>
   );
 }
 

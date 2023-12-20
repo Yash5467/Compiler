@@ -13,9 +13,6 @@ function App() {
       <div className="w-full">
      <Outlet/>
       </div>
-      <div className="w-full" >
-      <Output/>
-      </div>
     </div>
     
     
