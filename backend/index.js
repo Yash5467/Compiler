@@ -16,7 +16,7 @@ app.post("/api/code-execution", (req, res) => {
   const error = { err: "error you are trying something wrong" };
   let isSend = false;
   if (language === "java" && input === "") {
-    let envData = { OS: "windows", options: { timeout: 4000 } };
+    let envData = { OS: "windows", options: { timeout: 2000 } };
     try {
       compiler.compileJava(envData, code, function (data) {
         if (data.output) {
@@ -29,7 +29,7 @@ app.post("/api/code-execution", (req, res) => {
       });
       setTimeout(() => {
         if (!isSend) res.send(JSON.stringify(error.err));
-      }, 1000);
+      }, 2500);
     } catch (error) {
       console.log(error);
     }
@@ -51,7 +51,7 @@ app.post("/api/code-execution", (req, res) => {
     });
     setTimeout(() => {
       if (!isSend) res.send(JSON.stringify(error.err));
-    }, 1000);
+    }, 2000);
    } catch (error) {
      console.log(error);
    }
@@ -70,7 +70,7 @@ app.post("/api/code-execution", (req, res) => {
       });
       setTimeout(() => {
         if (!isSend) res.send(JSON.stringify(error.err));
-      }, 1500);
+      }, 2000);
     } catch (error) {
        console.log(error);
     }
@@ -89,7 +89,7 @@ app.post("/api/code-execution", (req, res) => {
       });
       setTimeout(() => {
         if (!isSend) res.send(JSON.stringify(error.err));
-      }, 1500);
+      }, 2000);
     } catch (error) {
       console.log(error);
     }
